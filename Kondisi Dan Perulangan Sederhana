@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WeekEnd_Assignment_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int angka,satuan,puluhan;
+            string  loop = "Y";//menyatakan nilai loop = Y
+
+            while (loop == "Y" || loop == "y") //untuk titik balik perulangan
+            {
+                Console.WriteLine("Masukan Angka : ");
+                angka = Convert.ToInt32(Console.ReadLine());
+
+                for (int n = 1; n <= angka; n++) //n=1 (perulangan dimulai dari 1), n <= angka (perulangan dilakukan sebanyak angka yang di input), perulangan dilakukan dengan penambahan +1 dari 1 hingga angka yang dimasukan
+                {
+                    if (n % 2 != 0) //jika perulangan modulo 2 tidak sama dengan 0 / baris perulangan ganjil, yang di hitung jumlah perulangannya karena jumlah perulangan angkanya selalu berubah, jika angka yang di hitung mulai dari perulangan 1 angka sudah berubah sehingga perulangan berikutnya akan menghasilkan hasil yang sama dengan perulangan yang pertama
+                    {
+                        satuan = n % 10; //untuk menghitung satuan (jika jumlah pengulangan diatas 9 maka akan dimodulo 10 untuk mendapatkan satuan, jika pengulangan di bawah 10 maka akan tetap terhitung satuan karena jika angka dimodulo dengan angka yang lebih besar hasilnya tetap angka pertama)
+
+                        Console.Write(n + " ");//untuk menampilkan nomor baris
+                        for (int i = 1; i <= satuan; i++)
+                        {
+                            Console.Write("Guk ");
+                        }
+
+                        if (satuan != 0 && n >= 10)//jika perulangan >= 10 dan memiliki satuan maka akan tampil tanda + (contoh : perulangan = 11 maka guk '+', perulangan = 10 maka tidak akan tampil '+' karena tidak memiliki satuan)
+                        {
+                            Console.Write("+ ");
+                        }
+
+                        if (n >= 10)
+                        {
+                            puluhan = n - satuan;//menghitung puluhan (jumlah perulangan di kurang satuan, contoh : perulangan = 34 maka 34-(34 % 10)= 34 - 4 = '30')
+                            Console.Write(puluhan+"x Guk");//menampilkan jumlah puluhan dan text "x Guk", Contoh : perulangan = 21 maka akan mucul 'Guk + 21 x Guk'
+                        }
+                        Console.Write("\n");//enter
+                    }
+                    else
+                    {
+                        satuan = n % 10;
+
+                        Console.Write(n + " ");
+                        for (int i = 1; i <= satuan; i++)
+                        {
+                            Console.Write("Meong ");
+                        }
+
+                        if (satuan != 0 && n >= 10)
+                        {
+                            Console.Write("+ ");
+                        }
+
+                        if (n >= 10)
+                        {
+                            puluhan = n - satuan;
+                            Console.Write(puluhan+"x Meong");
+                        }
+                        Console.Write("\n");
+                    }
+                }
+
+               
+                        Console.WriteLine("Ingin Mecoba Lagi ? : Y/N");
+                        loop = Console.ReadLine();
+                        Console.WriteLine("\n");
+                    }
+            }
+        }
+    }
+
